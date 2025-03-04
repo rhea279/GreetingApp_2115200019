@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using ModelLayer.Model;
 using RepositoryLayer.Context;
-using System.Linq;
 
 public class GreetingBL : IGreetingBL
 {
@@ -11,10 +10,22 @@ public class GreetingBL : IGreetingBL
 
    
 
-    public string GetGreeting()
+    public string GetGreeting(string? firstName, string?lastName)
     {
         _logger.LogInformation("GreetingBL: Returning greeting message.");
-        return "Hello, World!";
+        if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName))
+        {
+            return $"Hello, {firstName} {lastName}";
+        }
+        else if (!string.IsNullOrEmpty(lastName) ){
+            return $"Hello, {lastName} ";
+        }
+        else if (!string.IsNullOrEmpty(firstName)) {
+            return $"Hello, {firstName} ";
+        }
+        else {
+            return "Hello, World!";
+        }
     }
 
     public GreetingBL(GreetingContext dbContext , ILogger<GreetingBL> logger)

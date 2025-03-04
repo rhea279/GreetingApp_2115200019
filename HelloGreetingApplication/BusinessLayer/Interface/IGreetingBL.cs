@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public interface IGreetingBL
 {
-    string GetGreeting();
+    string GetGreeting(string? firstName, string? lastName);
     ResponseModel<string> CreateRecord(RequestModel requestModel);
     ResponseModel<string> UpdateRecord(RequestModel requestModel);
     ResponseModel<string> PatchRecord(string key, RequestModel requestModel);

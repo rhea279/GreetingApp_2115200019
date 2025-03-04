@@ -214,16 +214,32 @@ namespace HelloGreetingApplication.Controllers
         ///UC2 Task - Get Greeting from Business Layer
         ///</summary>
         [HttpGet("greeting")]
-        public IActionResult GetGreeting()
+        public IActionResult GetGreeting([FromQuery] string? firstName = null, [FromQuery] string? lastName = null)
         {
             _logger.LogInformation("GET request received at GreetingAppController.");
 
-            var message = _greetingBL.GetGreeting();
+            string message;
+            if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName))
+            {
+                message= $"Hello, {firstName} {lastName}!";
+            }
+            else if (!string.IsNullOrEmpty(lastName))
+            {
+                message = $"Hello {lastName}";
+            }
+            else if (!string.IsNullOrEmpty(firstName))
+            {
+                message = $"Hello {firstName}";
+            }
+            else
+            {
+                message = "Hello, World!";
+            }
 
             return Ok(new ResponseModel<string>
             {
                 Success = true,
-                Message = "API Endpoint Hit",
+                Message = "Greeting Generated Successfully",
                 Data = message
             });
         }
