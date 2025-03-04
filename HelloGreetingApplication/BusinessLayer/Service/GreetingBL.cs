@@ -1,4 +1,5 @@
-﻿using ModelLayer.Model;
+﻿using Microsoft.Extensions.Logging;
+using ModelLayer.Model;
 using RepositoryLayer.Context;
 using System.Linq;
 
@@ -6,9 +7,20 @@ public class GreetingBL : IGreetingBL
 {
     private readonly GreetingContext _dbContext;
 
-    public GreetingBL(GreetingContext dbContext)
+    private readonly ILogger<GreetingBL> _logger;
+
+   
+
+    public string GetGreeting()
+    {
+        _logger.LogInformation("GreetingBL: Returning greeting message.");
+        return "Hello, World!";
+    }
+
+    public GreetingBL(GreetingContext dbContext , ILogger<GreetingBL> logger)
     {
         _dbContext = dbContext;
+        _logger = logger;
     }
 
     public ResponseModel<string> GetGreetingMessage()

@@ -14,11 +14,13 @@ namespace HelloGreetingApplication.Controllers
     [Route("[controller]")]
     public class GreetingAppController : ControllerBase
     {
+        private readonly IGreetingBL _greetingBL;
         private readonly GreetingContext _dbContext;
         private readonly ILogger<GreetingAppController> _logger;
-        public GreetingAppController(GreetingContext dbContext, ILogger<GreetingAppController> logger)
+        public GreetingAppController(GreetingContext dbContext, IGreetingBL greetingBL, ILogger<GreetingAppController> logger)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+            _greetingBL = greetingBL ?? throw new ArgumentNullException(nameof(greetingBL)); 
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
@@ -208,6 +210,24 @@ namespace HelloGreetingApplication.Controllers
                 Data = $"Deleted Key: {key}"
             });
         }
+        ///<summary>
+        ///UC2 Task - Get Greeting from Business Layer
+        ///</summary>
+        [HttpGet("greeting")]
+        public IActionResult GetGreeting()
+        {
+            _logger.LogInformation("GET request received at GreetingAppController.");
+
+            var message = _greetingBL.GetGreeting();
+
+            return Ok(new ResponseModel<string>
+            {
+                Success = true,
+                Message = "API Endpoint Hit",
+                Data = message
+            });
+        }
+
 
 
     }
