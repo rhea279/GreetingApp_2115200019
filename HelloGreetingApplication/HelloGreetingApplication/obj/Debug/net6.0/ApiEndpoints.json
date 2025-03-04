@@ -1,0 +1,81 @@
+[
+  {
+    "ContainingType": "HelloGreetingApplication.Controllers.GreetingAppController",
+    "Method": "Get",
+    "RelativePath": "GreetingApp",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HelloGreetingApplication.Controllers.GreetingAppController",
+    "Method": "Post",
+    "RelativePath": "GreetingApp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestModel",
+        "Type": "ModelLayer.Model.RequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HelloGreetingApplication.Controllers.GreetingAppController",
+    "Method": "Put",
+    "RelativePath": "GreetingApp",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestModel",
+        "Type": "ModelLayer.Model.RequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HelloGreetingApplication.Controllers.GreetingAppController",
+    "Method": "Patch",
+    "RelativePath": "GreetingApp",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "key",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "requestModel",
+        "Type": "ModelLayer.Model.RequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HelloGreetingApplication.Controllers.GreetingAppController",
+    "Method": "Delete",
+    "RelativePath": "GreetingApp/{key}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "key",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
