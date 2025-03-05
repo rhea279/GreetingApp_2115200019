@@ -296,7 +296,7 @@ namespace HelloGreetingApplication.Controllers
         }
 
         ///<summary>
-        ///UC7 Task - Ability for the Greeting App to Edit a Greeting Messages in the Repository
+        ///UC& Task - Ability for the Greeting App to Edit a Greeting Messages in the Repository
         /// </summary>
 
         [HttpPatch("editGreeting/{id}")]
@@ -319,7 +319,23 @@ namespace HelloGreetingApplication.Controllers
 
             return Ok(new { message = "Greeting updated successfully!" });
         }
+        ///<summary>
+        ///UC8 Task - Ability for the Greeting App to Delete a message in repository
+        /// </summary>
 
+        [HttpDelete("deleteGreeting")]
+        public IActionResult DeleteGreetingId(int id)
+        {
+            var greeting = _dbContext.Greetings.FirstOrDefault(g => g.Id == id);
+            if (greeting == null)
+            {
+                return NotFound(new { message = "Greeting Not Found" });
+            }
+            _dbContext.Greetings.Remove(greeting);
+            _dbContext.SaveChanges();
+
+            return Ok(new { message = "Greeting Deleted Successfully!" });
+        }
 
     }
 }
