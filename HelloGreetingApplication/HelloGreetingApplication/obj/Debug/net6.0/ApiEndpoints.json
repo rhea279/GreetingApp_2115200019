@@ -90,6 +90,27 @@
   },
   {
     "ContainingType": "HelloGreetingApplication.Controllers.GreetingAppController",
+    "Method": "EditGreeting",
+    "RelativePath": "GreetingApp/editGreeting/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedGreeting",
+        "Type": "ModelLayer.Model.GreetingMessage",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HelloGreetingApplication.Controllers.GreetingAppController",
     "Method": "GetGreeting",
     "RelativePath": "GreetingApp/greeting",
     "HttpMethod": "GET",

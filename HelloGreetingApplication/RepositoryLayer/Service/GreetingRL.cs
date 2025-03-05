@@ -27,5 +27,16 @@ namespace RepositoryLayer.Service
         {
             return _dbContext.Greetings.ToList();
         }
+        public bool EditGreeting(int id, GreetingMessage updatedGreeting)
+        {
+            var existingGreeting = _dbContext.Greetings.FirstOrDefault(g => g.Id == id);
+            if (existingGreeting != null)
+            {
+                return false;
+            }
+            existingGreeting.Message = updatedGreeting.Message;
+            _dbContext.SaveChanges();
+            return true;
+        }
     }
 }

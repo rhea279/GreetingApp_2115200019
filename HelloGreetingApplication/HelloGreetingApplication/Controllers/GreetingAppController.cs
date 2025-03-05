@@ -295,5 +295,31 @@ namespace HelloGreetingApplication.Controllers
             return Ok(greeting);
         }
 
+        ///<summary>
+        ///UC7 Task - Ability for the Greeting App to Edit a Greeting Messages in the Repository
+        /// </summary>
+
+        [HttpPatch("editGreeting/{id}")]
+        public IActionResult EditGreeting(int id, [FromBody] GreetingMessage updatedGreeting)
+        {
+            if (updatedGreeting == null || string.IsNullOrEmpty(updatedGreeting.Message))
+            {
+                return BadRequest(new { message = "Invalid input data!" });
+            }
+
+            var existingGreeting = _dbContext.Greetings.FirstOrDefault(g => g.Id == id);
+
+            if (existingGreeting == null)
+            {
+                return NotFound(new { message = "Greeting not found!" });
+            }
+            existingGreeting.Message = updatedGreeting.Message;
+
+            _dbContext.SaveChanges();
+
+            return Ok(new { message = "Greeting updated successfully!" });
+        }
+
+
     }
 }

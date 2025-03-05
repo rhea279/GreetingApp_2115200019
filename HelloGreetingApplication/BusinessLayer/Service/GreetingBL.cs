@@ -68,6 +68,11 @@ public class GreetingBL : IGreetingBL
         };
     }
 
+    public bool EditGreeting(int id, GreetingMessage updatedGreeting)
+    {
+        return _greetingRL.EditGreeting(id, updatedGreeting);
+    }
+
     public ResponseModel<string> CreateRecord(RequestModel requestModel)
     {
         var response = new ResponseModel<string>
