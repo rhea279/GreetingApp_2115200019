@@ -22,5 +22,10 @@ namespace RepositoryLayer.Service
         {
             return _dbContext.Greetings.FirstOrDefault(g => g.Id == id);
         }
+
+        public List<GreetingMessage> GetAllGreetings()
+        {
+            return _dbContext.Greetings.ToList();
+        }
     }
 }

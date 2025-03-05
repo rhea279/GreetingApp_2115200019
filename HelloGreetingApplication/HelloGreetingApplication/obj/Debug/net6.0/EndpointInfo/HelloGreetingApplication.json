@@ -213,6 +213,18 @@
           }
         }
       }
+    },
+    "/GreetingApp/allGreetings": {
+      "get": {
+        "tags": [
+          "GreetingApp"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {

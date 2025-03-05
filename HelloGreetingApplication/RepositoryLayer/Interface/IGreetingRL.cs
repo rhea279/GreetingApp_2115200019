@@ -7,5 +7,6 @@ namespace RepositoryLayer.Interface
     {
         GreetingMessage GetGreetingById(int id);
         void SaveGreeting(string message);
+        List<GreetingMessage> GetAllGreetings();
     }
 }

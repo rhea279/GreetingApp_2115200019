@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer.Model;
 using RepositoryLayer.Context;
@@ -277,5 +278,22 @@ namespace HelloGreetingApplication.Controllers
             }
             return Ok(greeting);
         }
+
+        ///<summary>
+        ///UC6 Task - Ability for the Greeting App to List all the Greeting Messages in the Repository
+        /// </summary>
+
+
+        [HttpGet("allGreetings")]
+        public IActionResult GetAllGreeting()
+        {
+            var greeting = _greetingBL.GetAllGreeting();
+            if(greeting == null)
+            {
+                return NotFound(new { message = "No Greeting Found!" });
+            }
+            return Ok(greeting);
+        }
+
     }
 }

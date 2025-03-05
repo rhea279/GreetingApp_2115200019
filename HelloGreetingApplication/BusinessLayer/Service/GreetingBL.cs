@@ -54,6 +54,10 @@ public class GreetingBL : IGreetingBL
         _greetingRL = greetingRL;
     }
 
+    public List<GreetingMessage> GetAllGreeting()
+    {
+        return _greetingRL.GetAllGreetings();
+    }
     public ResponseModel<string> GetGreetingMessage()
     {
         return new ResponseModel<string>
