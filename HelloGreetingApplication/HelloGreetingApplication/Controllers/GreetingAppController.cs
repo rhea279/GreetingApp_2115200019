@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer.Model;
 using RepositoryLayer.Context;
+using RepositoryLayer.Service;
 
 
 namespace HelloGreetingApplication.Controllers
@@ -261,6 +262,20 @@ namespace HelloGreetingApplication.Controllers
                 Data = message
             });
 
+        }
+        ///<summary>
+        ///UC5 Task - Ability for the Greeting App to find a Greeting Message by Id in the Repository
+        /// </summary>
+
+        [HttpGet("greetingById/{id}")]
+        public IActionResult GetGreetingById(int id)
+        {
+            var greeting = _greetingBL.GetGreetingById(id);
+            if (greeting == null)
+            {
+                return NotFound(new { message = "Greeting not found!" });
+            }
+            return Ok(greeting);
         }
     }
 }

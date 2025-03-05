@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using ModelLayer.Model;
 using RepositoryLayer.Context;
 using RepositoryLayer.Interface;
@@ -21,6 +17,10 @@ namespace RepositoryLayer.Service
             var greeting = new GreetingMessage { Message = message, CreatedAt = DateTime.UtcNow };
             _dbContext.Greetings.Add(greeting);
             _dbContext.SaveChanges();
+        }
+        public GreetingMessage GetGreetingById(int id)
+        {
+            return _dbContext.Greetings.FirstOrDefault(g => g.Id == id);
         }
     }
 }

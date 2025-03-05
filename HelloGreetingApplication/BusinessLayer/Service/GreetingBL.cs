@@ -42,6 +42,11 @@ public class GreetingBL : IGreetingBL
         _greetingRL.SaveGreeting(message);
 
     }
+
+    public GreetingMessage GetGreetingById(int id)
+    {
+        return _greetingRL.GetGreetingById(id);
+    }
     public GreetingBL(GreetingContext dbContext , ILogger<GreetingBL> logger, IGreetingRL greetingRL)
     {
         _dbContext = dbContext;
