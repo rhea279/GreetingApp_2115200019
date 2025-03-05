@@ -14,3 +14,5 @@ C:\Users\asus\OneDrive\Desktop\HelloGreetingApplication\RepositoryLayer\obj\Debu
 C:\Users\asus\OneDrive\Desktop\HelloGreetingApplication\RepositoryLayer\obj\Debug\net6.0\refint\RepositoryLayer.dll
 C:\Users\asus\OneDrive\Desktop\HelloGreetingApplication\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.pdb
 C:\Users\asus\OneDrive\Desktop\HelloGreetingApplication\RepositoryLayer\obj\Debug\net6.0\ref\RepositoryLayer.dll
+C:\Users\asus\OneDrive\Desktop\HelloGreetingApplication\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.runtimeconfig.json
+C:\Users\asus\OneDrive\Desktop\HelloGreetingApplication\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.genruntimeconfig.cache

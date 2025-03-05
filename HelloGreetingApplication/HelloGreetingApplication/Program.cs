@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using RepositoryLayer.Context;
+using RepositoryLayer.Interface;
+using RepositoryLayer.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,9 @@ builder.Services.AddDbContext<GreetingContext>(options =>
 
 // Register business layer
 builder.Services.AddScoped<IGreetingBL, GreetingBL>();
+
+// Register business layer
+builder.Services.AddScoped<IGreetingRL, GreetingRL>();
 
 // Add Controllers and Swagger
 builder.Services.AddControllers();

@@ -1,37 +1,52 @@
 ﻿using Microsoft.Extensions.Logging;
 using ModelLayer.Model;
 using RepositoryLayer.Context;
+using RepositoryLayer.Interface;
 
 public class GreetingBL : IGreetingBL
 {
     private readonly GreetingContext _dbContext;
 
     private readonly ILogger<GreetingBL> _logger;
-
-   
-
+    private readonly IGreetingRL _greetingRL;
     public string GetGreeting(string? firstName, string?lastName)
     {
         _logger.LogInformation("GreetingBL: Returning greeting message.");
+        string message;
+
         if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName))
         {
-            return $"Hello, {firstName} {lastName}";
+            message = $"Hello, {firstName} {lastName}!";
         }
-        else if (!string.IsNullOrEmpty(lastName) ){
-            return $"Hello, {lastName} ";
+        else if (!string.IsNullOrEmpty(firstName))
+        {
+            message = $"Hello, {firstName}!";
         }
-        else if (!string.IsNullOrEmpty(firstName)) {
-            return $"Hello, {firstName} ";
+        else if (!string.IsNullOrEmpty(lastName))
+        {
+            message = $"Hello, Mr./Ms. {lastName}!";
         }
-        else {
-            return "Hello, World!";
+        else
+        {
+            message = "Hello, World!";
         }
+
+        // Save the greeting message in the repository
+        SaveGreeting(message);
+
+        return message;
     }
 
-    public GreetingBL(GreetingContext dbContext , ILogger<GreetingBL> logger)
+    public void SaveGreeting(string message)
+    {
+        _greetingRL.SaveGreeting(message);
+
+    }
+    public GreetingBL(GreetingContext dbContext , ILogger<GreetingBL> logger, IGreetingRL greetingRL)
     {
         _dbContext = dbContext;
         _logger = logger;
+        _greetingRL = greetingRL;
     }
 
     public ResponseModel<string> GetGreetingMessage()

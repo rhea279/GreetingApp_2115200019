@@ -20,7 +20,7 @@ namespace HelloGreetingApplication.Controllers
         public GreetingAppController(GreetingContext dbContext, IGreetingBL greetingBL, ILogger<GreetingAppController> logger)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
-            _greetingBL = greetingBL ?? throw new ArgumentNullException(nameof(greetingBL)); 
+            _greetingBL = greetingBL ?? throw new ArgumentNullException(nameof(greetingBL));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
@@ -32,13 +32,13 @@ namespace HelloGreetingApplication.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            _logger.LogInformation("GET request received at GreetingAppController."); 
-            
+            _logger.LogInformation("GET request received at GreetingAppController.");
+
             ResponseModel<string> responseModel = new ResponseModel<string>();
             responseModel.Success = true;
             responseModel.Message = "API Endpoint Hit";
             responseModel.Data = "Hello, World!";
-            
+
             _logger.LogInformation("GET request received at GreetingAppController.");
             return Ok(responseModel);
         }
@@ -221,7 +221,7 @@ namespace HelloGreetingApplication.Controllers
             string message;
             if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName))
             {
-                message= $"Hello, {firstName} {lastName}!";
+                message = $"Hello, {firstName} {lastName}!";
             }
             else if (!string.IsNullOrEmpty(lastName))
             {
@@ -244,7 +244,23 @@ namespace HelloGreetingApplication.Controllers
             });
         }
 
+        ///<summary>
+        ///UC3 Task - Ability for the Greeting App to save the Greeting Message in Repository 
+        /// </summary>
+        [HttpGet("greetingSave")]
+        public IActionResult GetGreetingSave([FromQuery] string? firstName = null, [FromQuery] string? lastName = null)
+        {
+            _logger.LogInformation("GET request received at GreetingAppController with parameters: FirstName={FirstName}, LastName={LastName}", firstName, lastName);
 
+            string message = _greetingBL.GetGreeting(firstName, lastName);
 
+            return Ok(new ResponseModel<string>
+            {
+                Success = true,
+                Message = "Greeting Saved Successfully",
+                Data = message
+            });
+
+        }
     }
 }
